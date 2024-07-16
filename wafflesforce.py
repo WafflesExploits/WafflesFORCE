@@ -290,7 +290,7 @@ print(f"{cyan}[Settings]{white}\n {cyan}[URL]{white} - '{url}'\n {text_get_csrf_
 if (output):
 	print(f" {cyan}[Output]{white} - '{output}'")
 start_attack()
-print_info(f"Tried: {tries_num}")
+print_info(f"Attempts: {tries_num}")
 
 # Stop Timer
 EndTime = time.perf_counter()
