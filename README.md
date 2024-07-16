@@ -65,31 +65,31 @@ options:
   -U [USERS], --users [USERS]
                         Path to usernames' wordlist file.
   -u [USER], --user [USER]
-                        Specify one username to use.
+                        Specify a single username to use
   -P [PASSWORDS], --passwords [PASSWORDS]
                         Path to passwords' wordlist file.
   -p [PASSWORD], --password [PASSWORD]
-                        Specify one password to use.
+                        Specify a single password to use
   -cr CSRF_REGEX, --csrf-regex CSRF_REGEX
-                        Specify Regex pattern to extract CSRF Token. Example:'name="csrf" value="(.*?)">'
+                        Specify a Regex pattern to extract the CSRF token. Example:'name="csrf" value="(.*?)">'
   -cp CSRF_PARAM, --csrf-param CSRF_PARAM
-                        Specify Regex pattern to extract CSRF Token. Example:'csrf'
+                        Specify the CSRF token parameter name to be used in the login POST Request. Example:'csrf'
   -cu [CSRF_URL], --csrf-url [CSRF_URL]
-                        URL Path to csrf token.
+                        URL path to fetch the CSRF token.
   -mr [MATCH_REGEX], --match-regex [MATCH_REGEX]
-                        Match specified Regex pattern. Example:'/login2'
+                        Match the specified regex pattern to verify login attempts. Example:'/login2'
   -ms [MATCH_STATUS], --match-status [MATCH_STATUS]
                         Match specified Status codes. Default:'200-299,301,302'
   -d [DATA], --data [DATA]
-                        Body parameters for POST request. Example:'username=*USER*&password=*PASS*'
+                        Body parameters for the POST request. Example:'username=*USER*&password=*PASS*'
   -q [QUERY], --query [QUERY]
-                        Query parameters for GET request.
+                        Feature not added yet - Query parameters for the GET request
   -t [THREADS], --threads [THREADS]
                         Number of threads to use. Default: 5
   -o [OUTPUT], --output [OUTPUT]
                         Outputs results to a file.
-  -vr, --verify         Set verify to false. Use if the website doesn't use SSL.
-  --verbose             Increase Verbosity.
+  -vr, --verify         Set verify to false. Use this if the website does not support SSL. Example: Uses HTTP instead of HTTPS
+  --verbose             Increase Verbosity. Use for debugging or giving more information about login attempts.
 
 [Usage Example]
 python3 wafflesforce.py --host "https://web-security-academy.net/login" --data 'username=*USER*&password=*PASS*' -U 'users.txt' -P 'passwords.txt' -mr '/login2' -ms '200-299,301,302' --csrf-param 'csrf' --csrf-regex 'name="csrf" value="(.*?)">' --threads 5 --output results.txt
