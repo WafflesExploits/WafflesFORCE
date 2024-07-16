@@ -12,4 +12,4 @@ python3 wafflesforce.py --host "https://web-security-academy.net/login" --data '
 ```
 
 ### Preview
-![image](https://github.com/user-attachments/assets/b86bd05e-ffaa-4c2f-b7b9-04391d17c924)
+![image](https://github.com/user-attachments/assets/6572f919-b586-405a-a365-ebeef00830a2)
