@@ -1,9 +1,34 @@
 ![image](https://github.com/user-attachments/assets/207902fe-2e60-497b-9a79-1ddcb460b7ca)
-## WafflesFORCE
 ### -> Multi-threaded Login Bruteforcer for Bypassing CRSF Tokens Protection
-I created this script to bruteforce logins and bypass CSRF Tokens protection. This works by grabbing the CSRF Token, before performing a login attempt.
+This script is designed to brute force logins and bypass CSRF token protection. It achieves this by automatically capturing the CSRF token before each login attempt.
 
-### Usage Example
+## Table of Contents
+- [Features](#features)
+- [Usage](#Usage)
+  - [Examples](#examples)
+- [Preivew](#Preview)
+- [Installation](#installation)
+- [Commands](#Commands)
+- [Contact](#contact)
+
+
+## Features
+- **Automatic CSRF Token Handling**: Automatically captures and uses CSRF tokens during brute force attempts.
+- **Multi-threading**: Utilizes multiple threads to increase the speed of brute force attempts.
+- **Flexible Configuration**: Supports custom regex patterns and parameter names for CSRF tokens.
+- **Status Code and Regex Matching**: Validates login attempts using customizable status codes and regex patterns.
+- **To be implemented**: Filter out based on status code and regex.
+
+**Note:** Always open for feature/improvement suggestions. Conta
+
+## Usage
+To use this script, specify the following:
+```
+--csrf-regex : A regex pattern to capture the CSRF token.
+--csrf-param : The name of the CSRF token parameter.
+```
+This additional configuration ensures the script accurately captures and uses CSRF tokens during brute force login attempts.
+### Examples
 ```Python
 # Basic Example
 python3 wafflesforce.py --host "https://web-security-academy.net/login" --data 'username=*USER*&password=*PASS*' -U 'users.txt' -P 'passwords.txt' -mr '/login2' -ms '200-299,301,302' --csrf-param 'csrf' --csrf-regex 'name="csrf" value="(.*?)">' --threads 5 --output results.txt
@@ -14,13 +39,13 @@ python3 wafflesforce.py --host "https://web-security-academy.net/login" --data '
 ### Preview
 ![image](https://github.com/user-attachments/assets/6572f919-b586-405a-a365-ebeef00830a2)
 
-### Installation
+## Installation
 ```bash
 git clone https://github.com/WafflesExploits/WafflesFORCE.git
 cd WafflesFORCE
 python3 wafflesforce.py ...
 ```
-### Commands 
+## Commands 
 ```
 ╦ ╦╔═╗╔═╗╔═╗╦  ╔═╗╔═╗╔═╗╔═╗╦═╗╔═╗╔═╗
 ║║║╠═╣╠╣ ╠╣ ║  ║╣ ╚═╗╠╣ ║ ║╠╦╝║  ║╣ 
@@ -72,3 +97,6 @@ python3 wafflesforce.py --host "https://web-security-academy.net/login" --data '
 [Using CSRF URL Example]
 python3 wafflesforce.py --host "https://web-security-academy.net/login" --data 'username=*USER*&password=*PASS*' -U 'users.txt' -P 'passwords.txt' -mr '/login2' -ms '200-299,301,302' --csrf-param 'csrf' --csrf-regex 'name="csrf" value="(.*?)">' --threads 5 --csrf-url "https://web-security-academy.net/login" --output results.txt
 ```
+
+## Contact
+Created by [@WafflesExploits](https://wafflesexploits.github.io/about/) - I'm always open to features/improvement suggestions! You can reach me out on my socials :)
