@@ -13,3 +13,10 @@ python3 wafflesforce.py --host "https://web-security-academy.net/login" --data '
 
 ### Preview
 ![image](https://github.com/user-attachments/assets/6572f919-b586-405a-a365-ebeef00830a2)
+
+### Installation
+```bash
+git clone https://github.com/WafflesExploits/WafflesFORCE.git
+cd WafflesFORCE
+python3 wafflesforce.py ...
+```
