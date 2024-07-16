@@ -5,16 +5,13 @@ from http.client import responses
 import time
 import requests
 import re
-import urllib3
+import urllib
 import argparse
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 import logging
-logging.getLogger("urllib3").setLevel(logging.ERROR)
-
-urllib3.disable_warnings()
-
+logging.getLogger("urllib").setLevel(logging.ERROR)
 ## Define colors
 yellow = "\033[33m"
 white = "\033[37m"
@@ -71,6 +68,7 @@ match_status = args.match_status
 verbose = args.verbose
 
 # Declaring Global Variables
+debug = False
 user_list = ''
 user_num = 0
 pass_list = ''
@@ -118,14 +116,18 @@ def get_csrf_token():
         cookie = get_response.cookies
         csrf_token = re.findall(csrf_regex_pattern,get_response.text)
         results = [cookie, csrf_token[0]]
+        if(debug): print(results) # Debug show cookies
         return results
-    except:
-        print_error(f"Couldn't Get CSRF Token. GET Request status code: [{str(get_response.status_code)}]")
-        sys.exit()
+    except Exception as e:
+        if(debug): print("Error"+str(e))
+        print_error(f"Couldn't Get CSRF Token. GET Request status code: [{str(get_response.status_code)}]") 
+
+def urlencode(string1):
+    return urllib.parse.quote_plus(string1)
 
 def create_form_data(user1, password1, data1, csrf_token1):
-    data1 = substitute_form_credentials(data1, user1, password1)
-    data1 = data1 + f"&{csrf_param_name}={csrf_token1}"
+    data1 = substitute_form_credentials(data1, urlencode(user1), urlencode(password1))
+    data1 = data1 + f"&{csrf_param_name}={urlencode(csrf_token1)}"
     form_data = convert_to_form_data(data1)
     return form_data
 
@@ -133,10 +135,9 @@ def substitute_form_credentials(data1, user1, password1):
     try:
         data1 = re.sub('\*USER\*', user1, data1)
         data1 = re.sub('\*PASS\*', password1, data1)
-    except:
+    except Exception as e:
         print_error("Couldn't find *USER* or *PASS* in your --data flag.")
         print(f"{light_green}[Correct Example]{white} -> --data 'user=*USER*&pass=*PASS*'")
-
     return data1
 
 def convert_to_form_data(data1):
@@ -192,7 +193,6 @@ def attempt_login(username1, password1):
     csrf_token = result1[1]
     csrf_cookie = result1[0]
     param = create_form_data(username1, password1, data, csrf_token)
-    #print(param) # - debugging
     # Send the POST Request
     post_response = POST_Request(url,param,csrf_cookie)
     post_response_text = str(post_response.headers) + str(post_response.text)
@@ -210,7 +210,7 @@ def attempt_login(username1, password1):
             check_response(match_response, post_response_text, output_string, str(stat_code))
     elif(match_status):
         if(stat_code in match_status):
-            print(output_string)
+            print_sucess(output_string)
 
 def create_threads(user_list1, pass_list1, executor1, attack_type):
     if(attack_type == 'up'):
