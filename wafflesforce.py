@@ -196,7 +196,6 @@ def attempt_login(username1, password1):
     # Send the POST Request
     post_response = POST_Request(url,param,csrf_cookie)
     post_response_text = str(post_response.headers) + str(post_response.text)
-
     stat_code = post_response.status_code
     colored_stat = get_stat_color(int(stat_code))
     output_string = f"Login {username1}:{password1} - [{colored_stat}]"
