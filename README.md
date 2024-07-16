@@ -19,7 +19,7 @@ This script is designed to brute force logins and bypass CSRF token protection. 
 - **Status Code and Regex Matching**: Validates login attempts using customizable status codes and regex patterns.
 - **To be implemented**: Filter out based on status code and regex.
 
-**Note:** Always open for feature/improvement suggestions. Conta
+**Note:** Always open for feature/improvement suggestions.
 
 ## Usage
 To use this script, specify the following:
