@@ -6,7 +6,7 @@ This script is designed to brute force logins and bypass CSRF token protection. 
 - [Features](#features)
 - [Usage](#Usage)
   - [Examples](#examples)
-- [Preivew](#Preview)
+- [Preview](#Preview)
 - [Installation](#installation)
 - [Commands](#Commands)
 - [Contact](#contact)
