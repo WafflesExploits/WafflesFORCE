@@ -1,5 +1,5 @@
 ![image](https://github.com/user-attachments/assets/207902fe-2e60-497b-9a79-1ddcb460b7ca)
-### -> Multi-threaded Login Bruteforcer for Bypassing CRSF Tokens Protection
+### -> Bypass CSRF Token Protection with a Multi-threaded Login Bruteforcer
 This script is designed to brute force logins and bypass CSRF token protection. It achieves this by automatically capturing the CSRF token before each login attempt.
 
 ## Table of Contents
